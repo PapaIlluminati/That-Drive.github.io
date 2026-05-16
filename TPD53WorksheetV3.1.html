@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>Worksheet</title>
+    <style type="text/css">
+  i {
+    font-size: 0.65em;
+  }
+p {
+  font-size: large;
+}
+
+</style></head>
+  <body>
+    <p><b>53 ft Turnpike Double Worksheet</b></p>
+    <p><b><br>
+      </b></p>
+    <p><b>Weight B Set</b></p>
+    <p><i>axles<b> ahead</b> of 41 only</i><b><br>
+      </b></p>
+    <p> Steering <input max="5500" min="0" name="bsteer" type="number"> </p>
+    <p> Drives <input max="17000" min="0" name="bdrive" type="number"> </p>
+    <p> Trailer <input max="17000" min="0" name="btrailer" type="number"> </p>
+    <p><b><br>
+      </b></p>
+    <p><b>Weight Converter Set</b> <i>(empty weights)</i></p>
+    <p> Steering <input max="5500" min="0" name="csteer" type="number"> <i>tractor
+        empty<br>
+      </i> </p>
+    <p> Drives <input max="17000" min="0" name="cdrive" type="number"> <i>tractor
+        empty<br>
+      </i> </p>
+    <p> Converter <input max="17000" min="0" name="ctrailer" type="number"> <i>converter
+        empty<br>
+      </i> </p>
+    <p><b><br>
+      </b></p>
+    <p> <b>Weight A Set </b> <i id="weightAWarning">(must be heaviest)</i> </p>
+    <p> <i>axles <b>behind</b> 41 only as far rear as practical<br>
+      </i> </p>
+    <p> Steering <input max="5500" min="0" name="asteer" type="number"> </p>
+    <p> Drives <input max="17000" min="0" name="adrive" type="number"> </p>
+    <p> Trailer <input max="17000" min="0" name="atrailer" type="number"> </p>
+    <p><b><br>
+      </b></p>
+    <p style="margin-top: 12px;"> <b>Combination Weight Predictions</b> </p>
+    <p> Steering: <span id="outSteer">0</span> <i>(max 5,500 KG)</i> </p>
+    <p> Drives: <span id="outDrive">0</span> <i>(max 17,000 KG)</i> </p>
+    <p> A Trailer: <span id="outATrailer">0</span> <i>(max 17,000 KG)</i> </p>
+    <p> Convertor: <span id="outConvertor">0</span> <i>(max 17,000 KG)</i> </p>
+    <p> B Trailer: <span id="outBTrailer">0</span> <i>(max 17,000 KG)</i> </p>
+    <p> Combination: <span id="outTotal">0</span> <i>(max 63,500 KG)</i> </p>
+    <p><i>APU Exemption on any one set of 225 KG</i></p>
+    <br>
+    <p> <b>Bridge Calculation</b></p>
+    <p> Bridge Weight: <span id="outBridge">0</span> </p>
+    <p> <i> Spread: c of lead axle on convertor to c of rear axle on A trailer</i></p>
+    <p><i>If unknown use 30,000 KG maximum<br>
+      </i></p>
+    <table style="width: 424px; height: 310px;" border="1">
+      <tbody>
+        <tr>
+          <td style="width: 105.317px;"> Spread <i>(meters)</i> </td>
+          <td style="width: 165.683px;"> Bridge Weight <i>(max KG)</i> </td>
+          <td> Apx. A Tandem&nbsp;<i> (m)</i> </td>
+        </tr>
+        <tr>
+          <td>&lt;3.0</td>
+          <td style="text-align: center;">23,000</td>
+          <td style="text-align: right;">&nbsp;placeholder 1<br>
+          </td>
+        </tr>
+        <tr>
+          <td>3.0 to</td>
+          <td style="text-align: center;">30,000</td>
+          <td style="text-align: right;">placeholder 2<br>
+          </td>
+        </tr>
+        <tr>
+          <td>4.3 to</td>
+          <td style="text-align: center;">30,500</td>
+          <td style="text-align: right;">placeholder 3<br>
+          </td>
+        </tr>
+        <tr>
+          <td>4.4 to</td>
+          <td style="text-align: center;">31,000</td>
+          <td style="text-align: right;">placeholder 4<br>
+          </td>
+        </tr>
+        <tr>
+          <td>4.5 to</td>
+          <td style="text-align: center;">31,500</td>
+          <td style="text-align: right;">placeholder 5<br>
+          </td>
+        </tr>
+        <tr>
+          <td>4.6 to</td>
+          <td style="text-align: center;">32,000</td>
+          <td style="text-align: right;">placeholder 6<br>
+          </td>
+        </tr>
+        <tr>
+          <td>4.7 to</td>
+          <td style="text-align: center;">32,500</td>
+          <td style="text-align: right;">placeholder 7<br>
+          </td>
+        </tr>
+        <tr>
+          <td>4.8 to</td>
+          <td style="text-align: center;">33,000</td>
+          <td style="text-align: right;">placeholder 8<br>
+          </td>
+        </tr>
+        <tr>
+          <td>4.9 to</td>
+          <td style="text-align: center;">33,500</td>
+          <td style="text-align: right;">placeholder 9<br>
+          </td>
+        </tr>
+        <tr>
+          <td>5.0 and greater</td>
+          <td style="text-align: center;">34,000</td>
+          <td style="text-align: right;">placeholder 10<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+      <b> </b></p>
+    <p><b>Please weight the as-built to verify final combination </b> </p>
+    <p><i>Webpage by Roy Lamontagne</i></p>
+    <script>
+      const inputs = document.querySelectorAll("input");
+
+      function getValue(name) {
+        return Number(
+          document.querySelector(`[name="${name}"]`).value
+        ) || 0;
+      }
+
+      function setOutput(id, value, max) {
+        const el = document.getElementById(id);
+
+        el.textContent = value;
+
+        if (value > max) {
+          el.style.color = "red";
+          el.style.fontWeight = "bold";
+        } else {
+          el.style.color = "black";
+          el.style.fontWeight = "normal";
+        }
+      }
+
+      function setInputColor(name, max) {
+        const input = document.querySelector(`[name="${name}"]`);
+        const value = Number(input.value) || 0;
+
+        if (value > max) {
+          input.style.color = "red";
+          input.style.fontWeight = "bold";
+        } else {
+          input.style.color = "black";
+          input.style.fontWeight = "normal";
+        }
+      }
+
+      function updateCalculator() {
+
+        // A Set
+        const asteer = getValue("asteer");
+        const adrive = getValue("adrive");
+        const atrailer = getValue("atrailer");
+
+        // B Set
+        const bsteer = getValue("bsteer");
+        const bdrive = getValue("bdrive");
+        const btrailer = getValue("btrailer");
+
+        // Converter Set
+        const csteer = getValue("csteer");
+        const cdrive = getValue("cdrive");
+        const ctrailer = getValue("ctrailer");
+
+        // Convertor calculation
+        const convertor =
+          bsteer +
+          bdrive -
+          csteer -
+          cdrive +
+          ctrailer;
+
+        // Combination total
+        const total =
+          asteer +
+          adrive +
+          atrailer +
+          convertor +
+          btrailer;
+
+        // Bridge Weight
+        const bridgeWeight =
+          atrailer +
+          convertor;
+
+        // Weight comparison
+        const aTotal =
+          asteer +
+          adrive +
+          atrailer;
+
+        const bTotal =
+          bsteer +
+          bdrive +
+          btrailer;
+
+        const warningEl =
+          document.getElementById("weightAWarning");
+
+        if (bTotal > aTotal) {
+          warningEl.style.color = "red";
+          warningEl.style.fontWeight = "bold";
+          warningEl.textContent =
+            "(must be heaviest) WARNING!";
+        } else {
+          warningEl.style.color = "black";
+          warningEl.style.fontWeight = "normal";
+          warningEl.textContent =
+            "(must be heaviest)";
+        }        
+        
+        
+        // Outputs
+        setOutput("outSteer", asteer, 5500);
+        setOutput("outDrive", adrive, 17000);
+        setOutput("outATrailer", atrailer, 17000);
+        setOutput("outConvertor", convertor, 17000);
+        setOutput("outBTrailer", btrailer, 17000);
+
+        // Combination total output
+        const totalEl = document.getElementById("outTotal");
+        totalEl.textContent = total;
+
+        if (total > 63500) {
+          totalEl.style.color = "red";
+          totalEl.style.fontWeight = "bold";
+        } else {
+          totalEl.style.color = "black";
+          totalEl.style.fontWeight = "normal";
+        }
+
+        // Bridge Weight output
+        const bridgeEl = document.getElementById("outBridge");
+        bridgeEl.textContent = bridgeWeight;
+
+        // Steering limits
+        setInputColor("bsteer", 5500);
+        setInputColor("csteer", 5500);
+        setInputColor("asteer", 5500);
+
+        // Drive / trailer limits
+        setInputColor("bdrive", 17000);
+        setInputColor("btrailer", 17000);
+        setInputColor("cdrive", 17000);
+        setInputColor("ctrailer", 17000);
+        setInputColor("adrive", 17000);
+        setInputColor("atrailer", 17000);
+      }
+
+      // Live updates
+      inputs.forEach(input => {
+        input.addEventListener("input", updateCalculator);
+      });
+
+      // Initial calculation
+      updateCalculator();
+    </script>
+  </body>
+</html>
